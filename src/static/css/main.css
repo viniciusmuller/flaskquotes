@@ -1,0 +1,505 @@
+/* -------------------- DOCUMENT -------------------- */
+
+@font-face {
+    font-family: LemonMilk;
+    src: url('../fonts/LEMONMILK-Regular.otf')
+}
+
+body {
+    padding-top: 40px;
+    font-family: LemonMilk;
+    background-color: #63458A;
+}
+
+/* -------------------- INDEX -------------------- */
+
+.index {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-bottom: 75px;
+}
+
+.logo-img {
+    margin-bottom: 40px;
+    display: inline-block;
+    width: 72px;
+}
+
+.logo h1 {
+    display: inline-block;
+    color: #330066;
+    font-size: 60px;
+}
+
+.logo h2 {
+    color: #48217c;
+}
+
+.index-btn, .index-btn:hover {
+    color: #330066;
+    background-color: #9A48D0;
+    border-radius: 25px;
+
+    width: 150px;
+}
+
+.index-buttons {
+    padding-top: 40px;
+}
+
+.btn-separator {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/* ----------------------- 404 --------------------- */
+
+.not-found h1 {
+    color: #330066;
+    font-size: 55px;
+}
+
+.not-found h2 {
+    color: #48217c;
+    padding-top: 25px;
+}
+
+/* -------------------- PROFILE -------------------- */
+
+/* ---------- USER PANEL ---------- */
+
+.user-panel {
+    color: #E4b7E5;
+    text-align: center;
+    overflow-wrap: break-word;
+    padding: 100px 0 0 50px;   
+}
+
+.user-panel h1 {
+    padding-top: 1px;
+}
+
+.user-panel h2 {
+    font-size: 20px;
+    padding-top: 30px;
+}
+
+.user-panel h5 {
+    padding-top: 5px;
+}
+
+.user-panel img {
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid #9A48D0;
+}
+
+.follow-btn, .follow-btn:hover {
+    background-color: #330066;
+    color: #E4b7E5;
+    border-radius: 25px;
+
+    margin-top: 12px;  
+}
+
+/* ---------- USER QUOTES ---------- */
+
+.user-quotes {
+    text-align: center;
+    padding: 100px 70px 0 50px;
+    margin-bottom: 50px;
+}
+
+.user-quotes h1 {
+    color: #E4b7E5;
+    margin-bottom: 15px;
+}
+
+.post-quote {
+    text-align: center;
+    padding: 6px;
+    border-radius: 25px;
+
+    background-color: #9A48D0;
+}
+
+.post-quote input,
+.post-quote input:focus,
+.post-quote input:active {
+    background-color: #E4b7E5;
+    width: 100%;
+    border-radius: 25px;
+
+    padding-left: 15px;
+    color: #9A48D0;
+    font-size: 24px;
+
+    outline: none;
+    border: none;
+}
+
+.post-quote input::placeholder {
+    color: #7E5A9B;
+}
+
+.no-quotes {
+    text-align: center;
+    padding-top: 12px !important;
+    padding: 6px;
+
+    background-color: #9A48D0;
+    color: #330066;
+    border-radius: 25px;
+}
+
+.user-quote {
+    margin-top: 25px;
+    background-color: #E4b7E5;
+    border-radius: 25px;
+
+    text-align: center;
+}
+
+.user-quote q, p {
+    margin-top: 8px;
+    font-size: 25px;
+    color: #9A48D0;
+}
+
+.user-quote a {
+    border-radius: 5px;
+    color: white;
+    background-color: #48217c;
+
+    padding: 5px 10px;
+}
+
+/* ---------- USER SUGGESTIONS ---------- */
+
+.user-suggestions {
+    background-color: #7E5A9B;
+    border-radius: 25px;
+}
+
+.user-suggestions {
+    margin-top: 125px;
+    padding: 15px;
+}
+
+.user-suggestions h4 {
+    color: #E4b7E5;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.user-recommendation {
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+
+    background-color: #c98fd5;
+    border-radius: 20px;
+    height: 69px;
+}
+
+.recommended-pic img {
+    border-radius: 50%;
+    width: 48px;
+    border: solid 2px #9A48D0;
+
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+.recommended-user {
+    display: inline-block;
+    padding-left: 5px;
+}
+
+.recommended-user h5 {
+    color: #63458A;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+.recommended-user p {
+    font-size: 12px;
+}
+
+/* -------------------- NAVBAR -------------------- */
+
+.navbar {
+    background-color: #9A48D0;
+}
+
+.navbar-brand, .navbar-brand:hover {
+    color: #330066;
+    font-size: 25px;
+    text-decoration: none;
+
+    padding-left: 5px;
+}
+
+.navbar img {
+    width: 28px;
+    margin-left: 4px;
+    margin-bottom: 5px;
+}
+
+.options-gear {
+    padding: 0px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: none;
+}
+
+.search-div {
+    padding-top: 2px;
+    position: relative;
+}
+
+#search-bar::-webkit-search-decoration,
+#search-bar::-webkit-search-cancel-button,
+#search-bar::-webkit-search-results-button,
+#search-bar::-webkit-search-results-decoration {
+    display: none;
+}
+
+#toggler-button:active, #toggler-button:focus {
+    outline: none !important;
+    background-color: #62448a71;
+}
+
+.search, .search:focus  {
+    border-radius: 25px;
+    background-color: #63458A; 
+    color: #48217c;
+
+    border: none;
+}
+
+.search::placeholder {
+    color: #48217c;
+}
+
+.magnifier {
+    position: absolute;
+    right: 8px;
+    top: 3px;
+
+    width: 36px;
+}
+
+.magnifier:active, .magnifier:focus {
+    outline: none !important;
+}
+
+.dropdown-menu {
+    background-color: #9A48D0;
+    border: none;
+}
+
+.dropdown-item:hover,
+.dropdown-item:active {
+    color: #48217c;
+    background-color: #9A48D0 !important;
+}
+
+/* -------------------- SIGNUP -------------------- */
+
+.form-top {
+    padding-top: 75px;
+}
+
+.site-form {
+    padding-top: 40px;
+    padding-bottom: 50px;
+    border-radius: 50px;
+
+    background-color: #c98fd5;
+}
+
+.site-form h1 {
+    color: #330066;
+}
+
+.register-form {
+    padding-top: 20px;
+}
+
+.register-form p {
+    font-size: 16px;
+}
+
+.register-form label {
+    color: #48217c;
+    padding-top: 10px;
+}
+
+.register-form input {
+    padding-left: 10px;
+    border: none;
+    outline: none !important;
+
+    border-radius: 20px;
+    color: #48217c;
+}
+
+.reg-btn-submit {
+    padding-top: 20px;
+}
+
+.register-form button,
+.register-form button:hover {
+    color: #FFFFFF;
+    background-color: #48217c;
+    border-radius: 25px;
+}
+
+.login-link, 
+.login-link:hover {
+    padding-top: 40px;
+    color: #48217c;
+}
+
+.login-link a {
+    text-decoration: none;
+}
+
+.login-form {
+    padding-top: 55px !important;
+}
+
+/* -------------------- MEDIA QUERIES -------------------- */
+
+@media only screen and (max-width: 600px) {
+    /* -------------------- INDEX -------------------- */
+
+    .index {
+        padding-top: 30px;
+    }
+
+    .logo-img {
+        padding-top: 17px;
+        margin-bottom: 40px;
+        display: inline-block;
+
+        width: 36px;
+    }
+    
+    .logo h1 {
+        font-size: 37px;
+    }
+    
+    .logo h2 {
+        font-size: 22px;
+    }
+    
+    .index-btn {
+        width: 150px;
+    }
+    
+    .index-buttons {
+        padding-top: 40px;
+    }
+
+    .btn-separator {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    /* ------------------ 404 ------------------- */
+
+    .not-found {
+        padding-top: 10px;
+    }
+
+    .not-found h1 {
+        font-size: 40px;
+    }
+
+    .not-found h2 {
+        padding-top: 10px;
+        font-size: 22px;
+    }
+
+    /* --------------- USER QUOTES ------------------ */
+
+    .post-quote input,
+    .post-quote input:focus,
+    .post-quote input:active {
+        font-size: 15px;
+        height: 40px;
+    }
+
+    /* ------------- USER SUGGESTIONS --------------- */
+
+    .user-suggestions {
+        margin-top: 75px;
+        padding: 15px;
+    }
+
+    /* ----------------- NAVBAR --------------------- */
+
+    .magnifier {
+        top: 4px !important;
+    }
+
+    .search-div {
+        padding-top: 3px;
+    }
+
+    .options {
+        padding-right: 10px;
+    }
+
+    .options-gear {
+        padding-right: 30px !important;
+        padding-top: 10px;
+        margin: 0;
+
+        float: right;
+        width: 24px;
+    }
+
+    .dropdown-item {
+        width: 275px;
+        border-top: 1px solid #48217c;
+    }
+
+    /* ----------------------- SIGNUP --------------------- */
+
+    .site-form {
+        padding-top: 20px;
+    }
+    
+    .reg-btn-submit {
+        padding-top: 25px;
+    }
+
+    .login-link {
+        padding-top: 25px;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    /* ---------- USER PANEL ---------- */
+
+    .user-panel {
+        padding-top: 75px;
+        margin-bottom: 25px;
+        padding-left: 7px;
+    }
+    
+    .user-quotes {
+        padding-right: 50px;
+    }
+}

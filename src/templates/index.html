@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+    {% block head %}
+    <title>FlaskQuotes</title>
+    {% endblock %}
+
+    {% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="index col-md-12">
+                <div class="logo">
+                    <h1>FlaskQuotes</h1>
+                    <img src="{{ url_for('static', filename='img/pepper.svg') }}" class="logo-img">
+                    <h2>A web application to connect yourself and <br> share your best quotes with other users.</h2>
+                </div>
+                <div class="index-buttons">
+                    <a href="/signup"><button class="btn index-btn">Sign In</button></a>
+                    <span class="btn-separator"></span>
+                    <a href="/login"><button class="btn index-btn">Login</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

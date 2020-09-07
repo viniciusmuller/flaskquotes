@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- BOOTSTRAP CSS -->
+        {{ bootstrap.load_css() }}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='img/pepper.svg') }}">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md fixed-top">
+            <a href="/" class="navbar-brand">FlaskQuotes<img src="{{ url_for('static', filename='img/pepper.svg')}}"></a>
+
+            <button id="toggler-button" class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#nav-collapse">
+                <p style="margin: 0; padding: 0; color: #330066;">&#9776;</p>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="navbar-item">
+                        <form id="search-form" action="" method="POST" class="form-inline">
+                            <div class="search-div">
+                                <input id="search-bar" class="search form-control" type="search" name="user-search" 
+                                placeholder="Search for a user..." aria-label="Search" size="50" autocomplete="off">
+                                <input type="image" src="{{ url_for('static', filename='img/search.svg') }}" class="magnifier">
+                            </div>
+                        </form>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="navbar-item">
+                        <div class="options dropdown" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="options-gear btn" type="button">
+                                <img src="{{ url_for('static', filename='img/gear.svg') }}">
+                            </button>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="/user/{{ current_user.usertag }}">My Profile</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <div class="flashdiv" style="padding-top: 25px; position: absolute; width: 100%;">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes style=" height: 40px; background-color: #330066; color: white;">
+                {% for message in messages %}
+                <li style="padding-top: 8px;">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+        {% block body %}{% endblock %}
+        <!-- BOOTSTRAP JS -->
+        {{ bootstrap.load_js() }}
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html>
