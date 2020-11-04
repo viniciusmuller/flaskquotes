@@ -1,51 +1,63 @@
-![Main page](img/main.png)
-![Profile page](img/profile.png)
-![Mobile view](img/mobile.png)
+<p float="left">
+    <img src="img/main.png" width="450" hspace="10" display="inline-block">
+    <img src="img/profile.png" width="450" hspace="10" display="inline-block">
+</p>
+<img src="img/mobile.png" width="200" hspace="10">
 
-#
-
-## What is it?
-
+&nbsp;
+## 🤔 What is this?
 It's a Flask-powered responsive web application project for sharing personal quotes.
 
-## How to install it?
+&nbsp;
+## ✨ Features:
+- Functional mini social-media application
+- An object relational SQLAlchemy database
+- Modularized design using Flask blueprints
+- Clean source code using decorators
+- Responsive design
 
-Clone or manually download this repository:
+&nbsp;
+## 🔨 TODO:
+- Add docker support
+- Replace server internal routes for a RESTful API design
+- Add scroll into quotes session
+- Like system
+- Create users feed
+- Automated tests
+- SSL/HTTP support
+- Add AJAX
 
-```bash
-git clone https://github.com/arcticlimer/flaskquotes
-```
+&nbsp;
+## ⚙️ Setting up the server:
 
-Change to it's source directory
+- Clone or manually download this repository:
 
-```bash
-cd flaskquotes/src
-```
+    ```bash
+    git clone https://github.com/arcticlimer/flaskquotes.git
+    ```
 
-Install the required modules
+- Change to the source directory:
 
-```
-python -m pip install -r requirements.txt
-```
+    ```bash
+    cd flaskquotes/src
+    ```
 
-Start the app!
+- Install the required modules:
 
-```
-flask run
-```
+    ```
+    python -m pip install -r requirements.txt
+    ```
 
-Now you can try it by going at localhost in your browser:
+- Start the app!
 
-```
-localhost:5000
-```
+    ```
+    flask run
+    ```
 
-## You can improve the project with:
+- Now you can try it by going at localhost in your browser:
 
-- ##### Adding AJAX support for python scripts in runtime
-- ##### Improving user recomendation
-- ##### Optimizing database usage
-- ##### Improving the app's UI and visual
-- ##### Creating a new color pallete (a new branch is suggested for that)
-
-###  Feel free to contribute and make your pull request!
+    ```
+    http://localhost:5000
+    ```
+&nbsp;
+## 🤝 Feel free to contribute and make your pull request!
