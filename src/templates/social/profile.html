@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block head %}
+        <title>{{ user.username }} - FlaskQuotes</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- User panel -->
+            <div class="user-panel col-md-3">
+                <img src="{{ user.profile_pic }}" class="profile-pic">
+                <h2>@{{ user.usertag }}</h2>
+                <h1>{{ user.username }}</h1>
+                <!-- Following -->
+                <h5 class="modal-toggle" data-toggle="modal" data-target="#following_modal">{{ user.following|length }} following</h5>
+                <!-- Following Modal -->
+                <div id="following_modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Following</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                {% for follower in user.following %}
+                                <a class="modal-users" href="/user/{{ follower.usertag }}">
+                                    <p>@{{ follower.usertag }}</p>
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END Following modal -->
+                 <!-- Followers -->
+                <h5 class="modal-toggle" data-toggle="modal" data-target="#followers_modal">{{ user.followers|length }} followers</h5>
+                <!-- Followers Modal -->
+                <div id="followers_modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Followers</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                {% for follower in user.followers %}
+                                <a class="modal-users" href="/user/{{ follower.usertag }}">
+                                    <p>@{{ follower.usertag }}</p>
+                                </a>
+                                <!-- TODO follow/unfollow button -->
+                                {% endfor %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END Followers modal -->
+                {% if current_user.usertag != user.usertag %}
+                {% if current_user.is_anonymous or not current_user.is_following(user) %}
+                <a href="/follow/{{ user.usertag }}"><button type="button" class="btn follow-btn">Follow</button></a>
+                {% elif current_user.is_following(user) %}
+                <a href="/unfollow/{{ user.usertag }}"><button type="button" class="btn follow-btn">Unfollow</button></a>
+                {% endif %}
+                {% endif %}
+            </div> <!-- END User panel -->
+            <!-- User quotes -->
+            <div class="col-md-6">
+                <div class="user-quotes">
+                    {% if current_user.usertag == user.usertag %}
+                    <h1>Your Quotes</h1>
+                    <div class="post-quote">
+                        <form id="quote-form" action="" method="POST" spellcheck="false">
+                            {{ quote_input.hidden_tag() }}
+                            {{ quote_input.content(placeholder="Share a new quote...", spellcheck="false", autocomplete="off", value="") }}
+                        </form>
+                    </div>
+                    {% else %}
+                    <h1>User Quotes</h1>
+                    {% endif %}
+                    {% if not quotes and current_user.usertag != user.usertag %}
+                    <div class="no-quotes">
+                        <h2>This user did not posted any quotes yet :(</h2>
+                    </div>
+                    {% endif %}
+
+                    {% for quote in quotes %}
+                    <div class="user-quote" style="padding: 7px; padding-bottom: 15px">
+                        <div class="quote-content">
+                            <q>{{ quote.content }}</q>
+                            <p>{{ quote.fmt_time }}</p>
+                            {% if current_user.usertag == user.usertag %}
+                            <a style="text-decoration: none;" href="/delete/{{ quote.id }}">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> 
+            </div> <!-- END User quotes -->
+            <!-- User suggestions -->
+            <div class="col-md-3"> 
+                <div class="user-suggestions">
+                    <h4>You may like:</h4>
+                    {% if rec_users %}
+                    {% for user in rec_users %}
+                    <div class="user-recommendation">
+                        <span class="recommended-pic">
+                            <img src="{{ user.profile_pic }}" class="recommended-pic">
+                        </span>
+                        <span class="recommended-user">
+                            <h5>{{ user.username }}</h5>
+                            <a href="/user/{{ user.usertag }}"><p>@{{ user.usertag }}</p></a>
+                        </span>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <h4>No users to suggest.</p>
+                    {% endif %}
+                </div>
+            </div> <!-- END User suggestions -->
+        </div>
+    </div>
+{% endblock %}
