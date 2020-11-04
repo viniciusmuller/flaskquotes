@@ -1,6 +1,6 @@
 <p float="left">
-    <img src="img/main.png" width="450" hspace="10" display="inline-block">
-    <img src="img/profile.png" width="450" hspace="10" display="inline-block">
+    <img src="img/main.png" width="435" hspace="10" display="inline-block">
+    <img src="img/profile.png" width="435" hspace="10" display="inline-block">
 </p>
 <img src="img/mobile.png" width="200" hspace="10">
 
