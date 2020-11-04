@@ -8,7 +8,18 @@
 body {
     padding-top: 40px;
     font-family: LemonMilk;
-    background-color: #63458A;
+    background-color: var(--bg-color);
+}
+
+:root {
+    --btn-txt-details: #48217c;
+    --navbar-color: #9A48D0;
+    --auth-form-bg: #c98fd5;
+    --auth-form: #c98fd5;
+    --bg-color: #63458A;
+    --post-bg: #E4B7E5;
+    --details: #330066;
+    --rec-bg: #7E5A9B;
 }
 
 /* -------------------- INDEX -------------------- */
@@ -31,17 +42,17 @@ body {
 
 .logo h1 {
     display: inline-block;
-    color: #330066;
+    color: var(--details);
     font-size: 60px;
 }
 
 .logo h2 {
-    color: #48217c;
+    color: var(--btn-txt-details);
 }
 
 .index-btn, .index-btn:hover {
-    color: #330066;
-    background-color: #9A48D0;
+    color: var(--details);
+    background-color: var(--navbar-color);
     border-radius: 25px;
 
     width: 150px;
@@ -59,12 +70,12 @@ body {
 /* ----------------------- 404 --------------------- */
 
 .not-found h1 {
-    color: #330066;
+    color: var(--details);
     font-size: 55px;
 }
 
 .not-found h2 {
-    color: #48217c;
+    color: var(--btn-txt-details);
     padding-top: 25px;
 }
 
@@ -73,7 +84,7 @@ body {
 /* ---------- USER PANEL ---------- */
 
 .user-panel {
-    color: #E4b7E5;
+    color: var(--post-bg);
     text-align: center;
     overflow-wrap: break-word;
     padding: 100px 0 0 50px;   
@@ -95,18 +106,42 @@ body {
 .user-panel img {
     width: 200px;
     border-radius: 50%;
-    border: 5px solid #9A48D0;
+    border: 5px solid var(--navbar-color);
 }
 
 .follow-btn, .follow-btn:hover {
-    background-color: #330066;
-    color: #E4b7E5;
+    background-color: var(--details);
+    color: var(--post-bg);
     border-radius: 25px;
 
     margin-top: 12px;  
 }
 
+
+/* ---------------------- MODAL ---------------------- */
+
+.modal-toggle {
+    cursor: pointer;
+}
+
+/* .modal-users {
+    display: inline-block;
+} */
+
+.modal-users:hover {
+    text-decoration: none;
+}
+
+.modal-title {
+    color: var(--auth-form-bg);
+}
+
+
 /* ---------- USER QUOTES ---------- */
+
+q {
+    word-wrap: break-word;
+}
 
 .user-quotes {
     text-align: center;
@@ -115,7 +150,7 @@ body {
 }
 
 .user-quotes h1 {
-    color: #E4b7E5;
+    color: var(--post-bg);
     margin-bottom: 15px;
 }
 
@@ -124,18 +159,18 @@ body {
     padding: 6px;
     border-radius: 25px;
 
-    background-color: #9A48D0;
+    background-color: var(--navbar-color);
 }
 
 .post-quote input,
 .post-quote input:focus,
 .post-quote input:active {
-    background-color: #E4b7E5;
+    background-color: var(--post-bg);
     width: 100%;
     border-radius: 25px;
 
     padding-left: 15px;
-    color: #9A48D0;
+    color: var(--navbar-color);
     font-size: 24px;
 
     outline: none;
@@ -143,7 +178,7 @@ body {
 }
 
 .post-quote input::placeholder {
-    color: #7E5A9B;
+    color: var(--rec-bg);
 }
 
 .no-quotes {
@@ -151,14 +186,14 @@ body {
     padding-top: 12px !important;
     padding: 6px;
 
-    background-color: #9A48D0;
-    color: #330066;
+    background-color: var(--navbar-color);
+    color: var(--details);
     border-radius: 25px;
 }
 
 .user-quote {
     margin-top: 25px;
-    background-color: #E4b7E5;
+    background-color: var(--post-bg);
     border-radius: 25px;
 
     text-align: center;
@@ -167,13 +202,13 @@ body {
 .user-quote q, p {
     margin-top: 8px;
     font-size: 25px;
-    color: #9A48D0;
+    color: var(--navbar-color);
 }
 
 .user-quote a {
     border-radius: 5px;
     color: white;
-    background-color: #48217c;
+    background-color: var(--btn-txt-details);
 
     padding: 5px 10px;
 }
@@ -181,7 +216,7 @@ body {
 /* ---------- USER SUGGESTIONS ---------- */
 
 .user-suggestions {
-    background-color: #7E5A9B;
+    background-color: var(--rec-bg);
     border-radius: 25px;
 }
 
@@ -191,7 +226,7 @@ body {
 }
 
 .user-suggestions h4 {
-    color: #E4b7E5;
+    color: var(--post-bg);
     text-align: center;
     padding-bottom: 10px;
 }
@@ -201,7 +236,7 @@ body {
     padding-left: 10px;
     margin-bottom: 20px;
 
-    background-color: #c98fd5;
+    background-color: var(--auth-form-bg);
     border-radius: 20px;
     height: 69px;
 }
@@ -209,7 +244,7 @@ body {
 .recommended-pic img {
     border-radius: 50%;
     width: 48px;
-    border: solid 2px #9A48D0;
+    border: solid 2px var(--navbar-color);
 
     margin-bottom: 25px;
     display: inline-block;
@@ -221,7 +256,7 @@ body {
 }
 
 .recommended-user h5 {
-    color: #63458A;
+    color: var(--bg-color);
     padding-top: 5px;
     font-size: 16px;
 }
@@ -233,11 +268,11 @@ body {
 /* -------------------- NAVBAR -------------------- */
 
 .navbar {
-    background-color: #9A48D0;
+    background-color: var(--navbar-color);
 }
 
 .navbar-brand, .navbar-brand:hover {
-    color: #330066;
+    color: var(--details);
     font-size: 25px;
     text-decoration: none;
 
@@ -280,14 +315,14 @@ body {
 
 .search, .search:focus  {
     border-radius: 25px;
-    background-color: #63458A; 
-    color: #48217c;
+    background-color: var(--bg-color);
+    color: var(--btn-txt-details);
 
     border: none;
 }
 
 .search::placeholder {
-    color: #48217c;
+    color: var(--btn-txt-details);
 }
 
 .magnifier {
@@ -303,14 +338,14 @@ body {
 }
 
 .dropdown-menu {
-    background-color: #9A48D0;
+    background-color: var(--navbar-color);
     border: none;
 }
 
 .dropdown-item:hover,
 .dropdown-item:active {
-    color: #48217c;
-    background-color: #9A48D0 !important;
+    color: var(--btn-txt-details);
+    background-color: var(--navbar-color) !important;
 }
 
 /* -------------------- SIGNUP -------------------- */
@@ -324,11 +359,11 @@ body {
     padding-bottom: 50px;
     border-radius: 50px;
 
-    background-color: #c98fd5;
+    background-color: var(--auth-form-bg);
 }
 
 .site-form h1 {
-    color: #330066;
+    color: var(--details);
 }
 
 .register-form {
@@ -340,7 +375,7 @@ body {
 }
 
 .register-form label {
-    color: #48217c;
+    color: var(--btn-txt-details);
     padding-top: 10px;
 }
 
@@ -350,7 +385,7 @@ body {
     outline: none !important;
 
     border-radius: 20px;
-    color: #48217c;
+    color: var(--btn-txt-details);
 }
 
 .reg-btn-submit {
@@ -360,14 +395,14 @@ body {
 .register-form button,
 .register-form button:hover {
     color: #FFFFFF;
-    background-color: #48217c;
+    background-color: var(--btn-txt-details);
     border-radius: 25px;
 }
 
 .login-link, 
 .login-link:hover {
     padding-top: 40px;
-    color: #48217c;
+    color: var(--btn-txt-details);
 }
 
 .login-link a {
@@ -472,7 +507,7 @@ body {
 
     .dropdown-item {
         width: 275px;
-        border-top: 1px solid #48217c;
+        border-top: 1px solid var(--btn-txt-details);
     }
 
     /* ----------------------- SIGNUP --------------------- */

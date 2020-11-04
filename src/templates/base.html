@@ -7,12 +7,12 @@
         <!-- BOOTSTRAP CSS -->
         {{ bootstrap.load_css() }}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-        <link rel="icon" href="{{ url_for('static', filename='img/pepper.svg') }}">
+        <link rel="icon" href="{{ url_for('static', filename='svg/pepper.svg') }}">
         {% block head %}{% endblock %}
     </head>
     <body>
         <nav class="navbar navbar-expand-md fixed-top">
-            <a href="/" class="navbar-brand">FlaskQuotes<img src="{{ url_for('static', filename='img/pepper.svg')}}"></a>
+            <a href="/" class="navbar-brand">FlaskQuotes<img src="{{ url_for('static', filename='svg/pepper.svg')}}"></a>
 
             <button id="toggler-button" class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#nav-collapse">
                 <p style="margin: 0; padding: 0; color: #330066;">&#9776;</p>
@@ -25,7 +25,7 @@
                             <div class="search-div">
                                 <input id="search-bar" class="search form-control" type="search" name="user-search" 
                                 placeholder="Search for a user..." aria-label="Search" size="50" autocomplete="off">
-                                <input type="image" src="{{ url_for('static', filename='img/search.svg') }}" class="magnifier">
+                                <input type="image" src="{{ url_for('static', filename='svg/search.svg') }}" class="magnifier">
                             </div>
                         </form>
                     </li>
@@ -33,7 +33,7 @@
                     <li class="navbar-item">
                         <div class="options dropdown" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <button class="options-gear btn" type="button">
-                                <img src="{{ url_for('static', filename='img/gear.svg') }}">
+                                <img src="{{ url_for('static', filename='svg/gear.svg') }}">
                             </button>
                         </div>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -48,11 +48,11 @@
         <div class="flashdiv" style="padding-top: 25px; position: absolute; width: 100%;">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <ul class=flashes style=" height: 40px; background-color: #330066; color: white;">
-                {% for message in messages %}
+            <ul class=flashes style="height: 40px; background-color: #330066; color: white;">
+            {% for message in messages %}
                 <li style="padding-top: 8px;">{{ message }}</li>
-                {% endfor %}
-                </ul>
+            {% endfor %}
+            </ul>
             {% endif %}
             {% endwith %}
         </div>
