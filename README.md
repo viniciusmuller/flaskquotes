@@ -24,7 +24,7 @@ It's a Flask-powered responsive web application project for sharing personal quo
 - Like system
 - Create users feed
 - Automated tests
-- SSL/HTTP support
+- SSL/HTTPS support
 - Add AJAX
 
 &nbsp;
