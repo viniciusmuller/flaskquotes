@@ -1,24 +1,21 @@
-/* -------------------- DOCUMENT -------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-@font-face {
-    font-family: LemonMilk;
-    src: url('../fonts/LEMONMILK-Regular.otf')
-}
+/* -------------------- DOCUMENT -------------------- */
 
 body {
     padding-top: 40px;
-    font-family: LemonMilk;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
 }
 
 :root {
-    --btn-txt-details: #48217c;
-    --navbar-color: #9A48D0;
-    --auth-form-bg: #c98fd5;
+    --btn-txt-details: #f5f5f5;
+    --navbar-color: #a676e4;
+    --auth-form-bg: #8c5dc9;
     --auth-form: #c98fd5;
-    --bg-color: #63458A;
+    --bg-color: #8c5dc9;
     --post-bg: #E4B7E5;
-    --details: #330066;
+    --details: #ffffff;
     --rec-bg: #7E5A9B;
 }
 
@@ -48,6 +45,7 @@ body {
 
 .logo h2 {
     color: var(--btn-txt-details);
+    font-weight: 300;
 }
 
 .index-btn, .index-btn:hover {
@@ -55,7 +53,9 @@ body {
     background-color: var(--navbar-color);
     border-radius: 25px;
 
-    width: 150px;
+    width: 220px;
+    height: 50px;
+    box-shadow: 0px 5px 20px #774fac;
 }
 
 .index-buttons {
@@ -84,7 +84,7 @@ body {
 /* ---------- USER PANEL ---------- */
 
 .user-panel {
-    color: var(--post-bg);
+    color: #f5f5f5;
     text-align: center;
     overflow-wrap: break-word;
     padding: 100px 0 0 50px;   
@@ -95,12 +95,14 @@ body {
 }
 
 .user-panel h2 {
+    font-weight: 300;
     font-size: 20px;
     padding-top: 30px;
 }
 
 .user-panel h5 {
     padding-top: 5px;
+    font-weight: 300;
 }
 
 .user-panel img {
@@ -150,7 +152,7 @@ q {
 }
 
 .user-quotes h1 {
-    color: var(--post-bg);
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
@@ -159,18 +161,17 @@ q {
     padding: 6px;
     border-radius: 25px;
 
-    background-color: var(--navbar-color);
+    background-color: #a676e4;
 }
 
 .post-quote input,
 .post-quote input:focus,
 .post-quote input:active {
-    background-color: var(--post-bg);
+    background-color: #a676e4;
     width: 100%;
     border-radius: 25px;
 
     padding-left: 15px;
-    color: var(--navbar-color);
     font-size: 24px;
 
     outline: none;
@@ -178,7 +179,7 @@ q {
 }
 
 .post-quote input::placeholder {
-    color: var(--rec-bg);
+    color: #f5f5f5;
 }
 
 .no-quotes {
@@ -192,9 +193,13 @@ q {
 }
 
 .user-quote {
-    margin-top: 25px;
-    background-color: var(--post-bg);
-    border-radius: 25px;
+    margin-top: 30px;
+    background-color: #a676e4;
+    color: #f5f5f5;
+    border-radius: 10px;
+
+    padding-top: 20px !important;
+    padding-bottom: 30px !important;
 
     text-align: center;
 }
@@ -202,13 +207,13 @@ q {
 .user-quote q, p {
     margin-top: 8px;
     font-size: 25px;
-    color: var(--navbar-color);
+    color: #f5f5f5;
 }
 
 .user-quote a {
     border-radius: 5px;
     color: white;
-    background-color: var(--btn-txt-details);
+    background-color: #864dd1;
 
     padding: 5px 10px;
 }
@@ -216,7 +221,7 @@ q {
 /* ---------- USER SUGGESTIONS ---------- */
 
 .user-suggestions {
-    background-color: var(--rec-bg);
+    background-color: #a676e4;
     border-radius: 25px;
 }
 
@@ -226,7 +231,8 @@ q {
 }
 
 .user-suggestions h4 {
-    color: var(--post-bg);
+    color: #ffffff;
+    font-weight: 400;
     text-align: center;
     padding-bottom: 10px;
 }
@@ -288,7 +294,8 @@ q {
 .options-gear {
     padding: 0px;
     padding-top: 5px;
-    padding-left: 10px;
+    padding-left: 20px;
+    padding-right: 10px;
 }
 
 .btn:focus,
@@ -339,13 +346,14 @@ q {
 
 .dropdown-menu {
     background-color: var(--navbar-color);
+    color: #252525;
     border: none;
 }
 
 .dropdown-item:hover,
 .dropdown-item:active {
     color: var(--btn-txt-details);
-    background-color: var(--navbar-color) !important;
+    background-color: #875dbf !important;
 }
 
 /* -------------------- SIGNUP -------------------- */
@@ -384,8 +392,11 @@ q {
     border: none;
     outline: none !important;
 
+    width: 200px;
+    height: 40px;
+
     border-radius: 20px;
-    color: var(--btn-txt-details);
+    color: #0a0a0a;
 }
 
 .reg-btn-submit {
@@ -439,7 +450,7 @@ q {
     }
     
     .index-btn {
-        width: 150px;
+        width: 300px;
     }
     
     .index-buttons {
@@ -537,4 +548,13 @@ q {
     .user-quotes {
         padding-right: 50px;
     }
+}
+
+.error-message {
+    color: #0a0a0a !important;
+}
+
+#content {
+    font-weight: 300;
+    color: #ffffff !important;
 }
