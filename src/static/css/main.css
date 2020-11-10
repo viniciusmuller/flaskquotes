@@ -113,7 +113,7 @@ body {
 
 .follow-btn, .follow-btn:hover {
     background-color: var(--details);
-    color: var(--post-bg);
+    color: var(--bg-color);
     border-radius: 25px;
 
     margin-top: 12px;  
@@ -129,6 +129,10 @@ body {
 /* .modal-users {
     display: inline-block;
 } */
+
+.modal-users p {
+    color: var(--auth-form-bg);
+}
 
 .modal-users:hover {
     text-decoration: none;
@@ -261,8 +265,12 @@ q {
     padding-left: 5px;
 }
 
+.recommended-user a {
+    text-decoration: none
+}
+
 .recommended-user h5 {
-    color: var(--bg-color);
+    color: var(--details);
     padding-top: 5px;
     font-size: 16px;
 }
