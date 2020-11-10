@@ -1,14 +1,8 @@
-<p float="left">
-    <img src="img/main.png" width="435" hspace="10" display="inline-block">
-    <img src="img/profile.png" width="435" hspace="10" display="inline-block">
-</p>
-<img src="img/mobile.png" width="200" hspace="10">
-
-&nbsp;
 ## 🤔 What is this?
 It's a Flask-powered responsive web application project for sharing personal quotes.
 
-&nbsp;
+<br><br>
+
 ## ✨ Features:
 - Functional mini social-media application
 - An object relational SQLAlchemy database
@@ -16,7 +10,8 @@ It's a Flask-powered responsive web application project for sharing personal quo
 - Clean source code using decorators
 - Responsive design
 
-&nbsp;
+<br><br>
+
 ## 🔨 TODO:
 - Add docker support
 - Replace server internal routes for a RESTful API design
@@ -27,7 +22,17 @@ It's a Flask-powered responsive web application project for sharing personal quo
 - SSL/HTTPS support
 - Add AJAX
 
-&nbsp;
+<br><br>
+
+## 👀 Preview
+<p float="left">
+    <img src="img/main.png" width="435" hspace="10" display="inline-block">
+    <img src="img/profile.png" width="435" hspace="10" display="inline-block">
+</p>
+<img src="img/mobile.png" width="200" hspace="10">
+
+<br><br>
+
 ## ⚙️ Setting up the server:
 
 - Clone or manually download this repository:
@@ -59,5 +64,6 @@ It's a Flask-powered responsive web application project for sharing personal quo
     ```
     http://localhost:5000
     ```
-&nbsp;
+<br><br>
+
 ## 🤝 Feel free to contribute and make your pull request!
