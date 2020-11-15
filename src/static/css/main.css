@@ -2,21 +2,22 @@
 
 /* -------------------- DOCUMENT -------------------- */
 
-body {
-    padding-top: 40px;
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-}
-
 :root {
     --btn-txt-details: #f5f5f5;
-    --navbar-color: #a676e4;
     --auth-form-bg: #8c5dc9;
+    --navbar-color: #a676e4;
     --auth-form: #c98fd5;
     --bg-color: #8c5dc9;
-    --post-bg: #E4B7E5;
+    --post-bg: #e4b7e5;
     --details: #ffffff;
-    --rec-bg: #7E5A9B;
+    --rec-bg: #7e5a9b;
+    --flash: #330066;
+}
+
+body {
+    padding-top: 40px;
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-color);
 }
 
 /* -------------------- INDEX -------------------- */
@@ -79,6 +80,24 @@ body {
     padding-top: 25px;
 }
 
+/* ----------------------- FLASHDIV --------------------- */
+
+.flashdiv {
+    padding-top: 25px;
+    position: absolute !important;
+    width: 100%;
+}
+
+.flashes {
+    height: 40px;
+    background-color: var(--flash);
+    color: white;
+}
+
+.flash {
+    padding-top: 8px;
+}
+
 /* -------------------- PROFILE -------------------- */
 
 /* ---------- USER PANEL ---------- */
@@ -126,12 +145,10 @@ body {
     cursor: pointer;
 }
 
-/* .modal-users {
-    display: inline-block;
-} */
-
-.modal-users p {
-    color: var(--auth-form-bg);
+.modal-users {
+    color: var(--auth-form-bg) !important;
+    font-size: 25px;
+    display: block;
 }
 
 .modal-users:hover {
@@ -145,7 +162,7 @@ body {
 
 /* ---------- USER QUOTES ---------- */
 
-q {
+.quote-content q {
     word-wrap: break-word;
 }
 
@@ -156,7 +173,7 @@ q {
 }
 
 .user-quotes h1 {
-    color: #ffffff;
+    color: var(--details);
     margin-bottom: 15px;
 }
 
@@ -165,13 +182,13 @@ q {
     padding: 6px;
     border-radius: 25px;
 
-    background-color: #a676e4;
+    background-color: var(--navbar-color);
 }
 
 .post-quote input,
 .post-quote input:focus,
 .post-quote input:active {
-    background-color: #a676e4;
+    background-color: var(--navbar-color);
     width: 100%;
     border-radius: 25px;
 
@@ -197,13 +214,13 @@ q {
 }
 
 .user-quote {
-    margin-top: 30px;
-    background-color: #a676e4;
+    background-color: var(--navbar-color);
     color: #f5f5f5;
     border-radius: 10px;
 
-    padding-top: 20px !important;
-    padding-bottom: 30px !important;
+    padding: 7px;
+    padding-bottom: 15px;
+    margin-top: 30px;
 
     text-align: center;
 }
@@ -214,18 +231,23 @@ q {
     color: #f5f5f5;
 }
 
-.user-quote a {
-    border-radius: 5px;
-    color: white;
+.delete-quote-btn {
     background-color: #864dd1;
+    color: var(--details);
 
+    text-decoration: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    border-radius: 5px;
     padding: 5px 10px;
 }
 
 /* ---------- USER SUGGESTIONS ---------- */
 
 .user-suggestions {
-    background-color: #a676e4;
+    background-color: var(--navbar-color);
     border-radius: 25px;
 }
 
@@ -235,7 +257,7 @@ q {
 }
 
 .user-suggestions h4 {
-    color: #ffffff;
+    color: var(--details);
     font-weight: 400;
     text-align: center;
     padding-bottom: 10px;
@@ -382,20 +404,20 @@ q {
     color: var(--details);
 }
 
-.register-form {
+.app-auth-form {
     padding-top: 20px;
 }
 
-.register-form p {
+.app-auth-form p {
     font-size: 16px;
 }
 
-.register-form label {
+.app-auth-form label {
     color: var(--btn-txt-details);
     padding-top: 10px;
 }
 
-.register-form input {
+.app-auth-form input {
     padding-left: 10px;
     border: none;
     outline: none !important;
@@ -407,29 +429,47 @@ q {
     color: #0a0a0a;
 }
 
-.reg-btn-submit {
-    padding-top: 20px;
+.reg-btn {
+    color: var(--details) !important;
+    background-color: var(--navbar-color);
 }
 
-.register-form button,
-.register-form button:hover {
-    color: #FFFFFF;
+/* -------------------- LOGIN -------------------- */
+
+.app-auth-form button,
+.app-auth-form button:hover {
+    color: var(--details);
     background-color: var(--btn-txt-details);
     border-radius: 25px;
 }
 
-.login-link, 
-.login-link:hover {
+.login-link {
     padding-top: 40px;
     color: var(--btn-txt-details);
 }
 
-.login-link a {
+.login-link:hover {
+    color: var(--btn-txt-details);
     text-decoration: none;
+}
+
+.login-link span {
+    color: #4e3076;
 }
 
 .login-form {
     padding-top: 55px !important;
+}
+
+.login-btn {
+    color: var(--details) !important;
+    background-color: var(--navbar-color);
+    padding: 2px 10px;
+}
+
+#remember_me {
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* -------------------- MEDIA QUERIES -------------------- */
@@ -564,5 +604,5 @@ q {
 
 #content {
     font-weight: 300;
-    color: #ffffff !important;
+    color: var(--details) !important;
 }
