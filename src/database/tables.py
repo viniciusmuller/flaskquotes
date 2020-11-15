@@ -24,16 +24,12 @@ followers_table = db.Table("followers",
 
 class User(db.Model, UserMixin):
     """User table for database
-    
-    Attributes
-    ----------
-
 
     Notes
     -----
     One to many relationship with `Posts`.
     """
- 
+
     # Table fields
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), index=True)
@@ -42,7 +38,8 @@ class User(db.Model, UserMixin):
     # For security reasons, only the hashed passwords are stored.
     password_hash = db.Column(db.String(128))
 
-    # Using the Quote class as a column and referencing it as "author".
+    # Using the Quote class as a column and referencing
+    # the instance as "author" on the Quote object.
     _quotes = db.relationship("Quote", backref="author", lazy="dynamic")
 
     # Many-to-many relationship between users
@@ -56,53 +53,54 @@ class User(db.Model, UserMixin):
     )
 
     def create_hashed_password(self, password: str) -> str:
+        """Generates a sha256 salted hash for user the password"""
         self.password_hash = generate_password_hash(password)
 
-    def check_password(self, password: str) -> bool:
+    def verify_password(self, password: str) -> bool:
+        """
+        Hashes the user input, compares it with the user hashed password
+        and returns a boolean, whether the passwords match or not.
+        """
         return check_password_hash(self.password_hash, password)
 
-    def is_following(self, user: User):
+    def is_following(self, user: User) -> bool:
         return user in self._following
 
     @commit(add=False)
-    def follow(self, user: User):
+    def follow(self, user: User) -> None:
 
         if not self.is_following(user):
             self._following.append(user)
 
     @commit(add=False)
-    def unfollow(self, user: User):
+    def unfollow(self, user: User) -> None:
 
         if self.is_following(user):
             self._following.remove(user)
 
     @commit(add=False)
-    def remove_quote(self, quote: Quote):
+    def remove_quote(self, quote_id: int):
+        quote = self._quotes.filter_by(id=quote_id).first()
         self._quotes.remove(quote)
 
     @property
-    def quotes(self):
+    def quotes(self) -> list:
         return self._quotes.all()
 
     @property
-    def following(self):
+    def following(self) -> list:
         return self._following.all()
 
     @property
-    def followers(self):
+    def followers(self) -> list:
         return self._followers.all()
-
-    def __repr__(self):
-        return f'<User @{self.usertag}>'
 
 
 class Quote(db.Model):
-    """Quote table for database
-    
-    """
+    """Quote table for database"""
 
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(220))
+    content = db.Column(db.String(150))
 
     timestamp = db.Column(db.DateTime,
                           index=True,
@@ -114,7 +112,3 @@ class Quote(db.Model):
     @property
     def fmt_time(self):
         return self.timestamp.strftime("%B %d, %A %H:%M")
-
-    def __repr__(self):
-        # Talvez mudar
-        return f"<Quote {self.id}, {self.content[:15]}...>"

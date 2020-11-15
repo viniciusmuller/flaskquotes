@@ -1,11 +1,12 @@
-import random 
+from typing import Optional
+from random import sample
 
 from utils.decorators import commit
-from database.tables import User
 from database.tables import Quote
+from database.tables import User
 
 
-def find_user(usersearch: str) -> User:
+def find_user(usersearch: str) -> Optional[User]:
     """Search for a user either by name or tag and returns it
     
     Parameters
@@ -17,6 +18,10 @@ def find_user(usersearch: str) -> User:
     ------
     user : `User`
         Requested user instance
+    
+    Notes
+    -----
+    If the user is not found, returns None
     """
 
     user = User.query.filter_by(usertag=usersearch).first() \
@@ -25,7 +30,6 @@ def find_user(usersearch: str) -> User:
     return user
 
 
-# needs to find by usertag
 def validate_signup(usertag: str) -> bool:
     """Checks if the usertag already exists before signup
 
@@ -46,9 +50,8 @@ def validate_signup(usertag: str) -> bool:
     return not bool(user)
 
 
-# need to verify by usertag
 def validate_login(usertag: str, password: str) -> bool:
-    """Compare form password with the actual user hashed password
+    """Compare input password with the actual user hashed password.
     
     Parameters
     ----------
@@ -69,13 +72,28 @@ def validate_login(usertag: str, password: str) -> bool:
     if user is None:
         return False
 
-    return bool(user.check_password(password))
+    return user.verify_password(password)
 
 
 def user_suggestions(user: User, prof_owner: User, user_num: int) -> list:
-    """Returns a list of suggested users with length given by 'user_num'.
+    """Returns a mixed list of suggested users for the current user.
 
-    Tem q melhorar essa viu
+    Parameters
+    ----------
+
+    user : `User`
+        The current user using the application
+
+    prof_owner : `User`
+        Owner of the current profile
+
+    user_num : `int`
+        How many users the function will return
+
+    Notes
+    -----
+    If the total users number is lesser than `user_num`,
+    a list containing all the users will be returned.
     """
 
     users = User.query.all()
@@ -83,15 +101,15 @@ def user_suggestions(user: User, prof_owner: User, user_num: int) -> list:
     try:
         users = [u for u in users if not user.is_following(u)
                  and user != u != prof_owner]
-    # Current user is anonymous
     except AttributeError:
-        pass
+        # Current user is anonymous
+        users = [u for u in users if u != prof_owner]
 
     if user_num <= len(users):
-        return random.sample(users, user_num)
+        return sample(users, user_num)
 
     # Less avaiable users than user_num required
-    return random.sample(users, len(users))
+    return sample(users, len(users))
 
 
 @commit()
@@ -125,8 +143,8 @@ def register_user(username: str, usertag: str, password: str) -> User:
 
 @commit()
 def create_quote(user: User, content: str) -> None:
-    """Creates a quote linking it to it's author
-    
+    """Creates a quote linking it to it's author.
+
     Parameters
     ----------
     user : `User`
@@ -136,5 +154,4 @@ def create_quote(user: User, content: str) -> None:
         String containing quote content
     """
 
-    q = Quote(content=content, user_id=user.id)
-    return q
+    return Quote(content=content, user_id=user.id)

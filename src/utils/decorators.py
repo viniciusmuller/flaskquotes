@@ -70,19 +70,3 @@ def commit(add=True):
             return result
         return wrapper
     return decorator
-
-
-def login_required(f):
-    """If the current user is not logged in,
-    he gets redirected to /login.
-    """
-    @functools.wraps(f)
-    def wrapper(*args, **kwargs):
-
-        if not current_user.is_authenticated:
-            return redirect("/login")
-        
-        result = f(*args, **kwargs)
-
-        return result
-    return wrapper

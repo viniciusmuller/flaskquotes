@@ -49,5 +49,4 @@ class LoginForm(FlaskForm):
 class QuoteInput(FlaskForm):
     """Form used for posting quotes on the application"""
 
-    content = StringField("Quote content", validators=[DataRequired(),
-                                                      Length(max=120)])
+    content = StringField("Quote content")

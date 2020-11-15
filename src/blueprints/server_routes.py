@@ -1,10 +1,12 @@
 from flask import Blueprint
 from flask import redirect
+from flask import jsonify
+from flask import request
 from flask import abort
 from flask_login import current_user
 from flask_login import logout_user
 
-from utils.decorators import login_required
+from utils.session import create_quote
 from utils.session import find_user
 
  
@@ -13,11 +15,10 @@ server_routes = Blueprint(name="server_routes",
                           template_folder="templates")
 
 
-@server_routes.route("/delete/<int:quote_id>")
-@login_required
+@server_routes.route("/delete/<int:quote_id>", methods=["DELETE"])
 def remove_quote(quote_id: int):
     """Removes the given ID quote from the database.
-    
+
     Notes
     -----
     - If the user is anonymous, he is redirected to /login;
@@ -25,27 +26,55 @@ def remove_quote(quote_id: int):
     - If the quote does not exist, a 404 status code is raised.
     """
 
-    quote = current_user._quotes.filter_by(id=quote_id).first()
-
-    if quote not in current_user._quotes:
+    try:
+        current_user.remove_quote(quote_id)
+    except:
         abort(401)
-    else:
-        current_user.remove_quote(quote)
+    
+    return jsonify(
+        status="success"
+    )
 
-    return redirect(f"/user/{current_user.usertag}")
 
-    # If the quote doesn't exist
-    return abort(404)
+@server_routes.route("/post", methods=["POST"])
+def post_quote():
+    """Receives a POST request and validates it content.
+    
+    Notes
+    -----
+    If the quote posted by the user validate,
+    adds it to the database.
+    """
+
+    if not current_user.is_authenticated:
+        abort(401)
+
+    content = request.form.get("content", '')
+
+    if 0 < len(content) < 150:
+        # Successful post
+        quote = create_quote(current_user, content)
+
+        return jsonify(
+            content=content,
+            timestamp=quote.fmt_time,
+            success=True,
+            id=quote.id
+        )
+
+    # Post failed validation
+    return jsonify(
+        success=False,
+        reason="Quote length must be lesser than 150 characters."
+    )
 
 
 @server_routes.route("/follow/<string:usertag>")
-@login_required
 def follow(usertag: str):
     """Follow the user given at endpoint and redirect to his profile.
     
     Notes
     -----
-    - If the user is anonymous, he is redirected to /login;
     - If the user does not exist, a 404 status code is raised.
     """
     user = find_user(usertag)
@@ -53,28 +82,43 @@ def follow(usertag: str):
     if user is None:
         abort(404)
 
-    current_user.follow(user)
+    if auth := current_user.is_authenticated:
+        current_user.follow(user)
 
-    return redirect(f"/user/{usertag}")
-
+    # This is used on clientside in order to redirect an unauthenticated
+    # user to the login page, any user changes into clientside javascript
+    # will not affect serverside behaviour.
+    return jsonify(
+        authenticated=auth
+    )
 
 @server_routes.route("/unfollow/<string:usertag>")
-@login_required
 def unfollow(usertag: str):
-
+    """
+    Follows the at the given endpoint
+    
+    Notes
+    -----
+    - If the user does not exist, a 404 status code is raised.
+    """
     user = find_user(usertag)
 
     if user is None:
         abort(404)
 
-    current_user.unfollow(user)
+    if auth := current_user.is_authenticated:
+        current_user.unfollow(user)
 
-    return redirect(f"/user/{usertag}")
+    return jsonify(
+        authenticated=auth
+    )
 
 
 @server_routes.route("/logout")
-@login_required
 def logout():
     """Ends a flask_login user session."""
-    logout_user()
+
+    if current_user.is_authenticated:
+        logout_user()
+
     return redirect('/')

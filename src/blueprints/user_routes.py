@@ -12,7 +12,6 @@ from utils.session import user_suggestions
 from utils.session import validate_signup
 from utils.session import validate_login
 from utils.session import register_user
-from utils.session import create_quote
 from utils.session import find_user
 from forms.forms import RegisterForm
 from forms.forms import QuoteInput
@@ -88,15 +87,18 @@ def profile(usertag: str):
 
     quote_input = QuoteInput()
 
-    if quote_input.validate_on_submit():
-        create_quote(current_user, quote_input.content.data)
+    #if quote_input.validate_on_submit():
+    #    create_quote(current_user, quote_input.content.data)
 
     suggestions = user_suggestions(user=current_user, 
                                    prof_owner=profile_owner,
                                    user_num=5)
 
     # Reversed quotes for chronologic view
-    quotes = reversed(profile_owner.quotes)
+    quotes = profile_owner.quotes
+    # We cannot use the reversed() iterator here since
+    # we need to know if the list is empty on the template
+    quotes.reverse()
 
     return dict(quote_input=quote_input, 
                 rec_users=suggestions,
