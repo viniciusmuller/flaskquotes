@@ -10,7 +10,7 @@
             <div class="col-md-6 text-center">
                 <div class="site-form login-form">
                     <h1>Login</h1>
-                    <form class="register-form" action="" method="POST" novalidate>
+                    <form class="app-auth-form" action="" method="POST" novalidate>
                         {{ form.hidden_tag() }}
                         <p>
                             {{ form.username.label }} <br>
@@ -30,12 +30,12 @@
                             {{ form.remember_me() }} {{ form.remember_me.label}}
                         </p>
                         <p>
-                            {{ form.submit(style="color: white; background-color: #330066; padding: 2px 10px;") }}
+                            {{ form.submit(class="login-btn") }}
                         </p>
                     </form>
-                    <div class="login-link">
-                        <a href="/signup" class="login-link">Do not have an account? <br> <span style="color: #330066;">Signup here</span></a>
-                    </div>
+                    <a href="/signup" class="login-link">Do not have an account?<br>
+                        <span>Signup here</span>
+                    </a>
                 </div>
             </div>
         </div>

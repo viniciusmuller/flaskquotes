@@ -45,12 +45,12 @@
                 </ul>
             </div>
         </nav>
-        <div class="flashdiv" style="padding-top: 25px; position: absolute; width: 100%;">
+        <div class="flashdiv">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <ul class=flashes style="height: 40px; background-color: #330066; color: white;">
+            <ul class=flashes>
             {% for message in messages %}
-                <li style="padding-top: 8px;">{{ message }}</li>
+                <li class="flash">{{ message }}</li>
             {% endfor %}
             </ul>
             {% endif %}
@@ -59,6 +59,11 @@
         {% block body %}{% endblock %}
         <!-- BOOTSTRAP JS -->
         {{ bootstrap.load_js() }}
-        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <!-- APP JS -->
+        <script src="{{ url_for('static', filename='js/prevent_form.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/delete_quote.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/post_quote.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/follow.js') }}"></script>
     </body>
 </html>

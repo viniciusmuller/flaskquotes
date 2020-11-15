@@ -10,7 +10,7 @@
             <div class="col-md-6 text-center">
                 <div class="site-form">
                     <h1>Register</h1>
-                    <form class="register-form" action="" method="POST" novalidate>
+                    <form class="app-auth-form" action="" method="POST" novalidate>
                         {{ form.hidden_tag() }}
                         <p>
                             {{ form.username.label }} <br>
@@ -41,12 +41,12 @@
                             {% endfor %}
                         </p>
                         <p>
-                            {{ form.submit(style="color: white; background-color: #a676e4;") }}
+                            {{ form.submit(class="reg-btn") }}
                         </p>
                     </form>
                     <div class="login-link">
                         <a href="/login" class="login-link">Already have an account?<br>
-                            <span style="color: #4e3076;">Login here</span>
+                            <span>Login here</span>
                         </a>
                     </div>
                 </div>
