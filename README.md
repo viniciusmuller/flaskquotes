@@ -1,28 +1,28 @@
 ## 🤔 What is this?
 It's a Flask-powered responsive web application project for sharing personal quotes.
 
-<br><br>
+<br>
 
 ## ✨ Features:
 - Functional mini social-media application
-- An object relational SQLAlchemy database
+- AJAX on clientside for doing actions without page reload
 - Modularized design using Flask blueprints
 - Clean source code using decorators
+- An ORM SQLAlchemy database
 - Responsive design
 
-<br><br>
+<br>
 
 ## 🔨 TODO:
-- Add docker support
+- Add docker support (Partially implemented)
 - Replace server internal routes for a RESTful API design
 - Add scroll into quotes session
 - Like system
 - Create users feed
 - Automated tests
 - SSL/HTTPS support
-- Add AJAX
 
-<br><br>
+<br>
 
 ## 👀 Preview
 <p float="left">
@@ -64,6 +64,6 @@ It's a Flask-powered responsive web application project for sharing personal quo
     ```
     http://localhost:5000
     ```
-<br><br>
+<br>
 
 ## 🤝 Feel free to contribute and make your pull request!
