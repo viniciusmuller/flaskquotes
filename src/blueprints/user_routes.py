@@ -18,7 +18,7 @@ from forms.forms import QuoteInput
 from forms.forms import LoginForm
 
 
-user_routes = Blueprint(name="user_routes", 
+user_routes = Blueprint(name="user_routes",
                         import_name=__name__,
                         template_folder="templates")
 
@@ -90,7 +90,7 @@ def profile(usertag: str):
     #if quote_input.validate_on_submit():
     #    create_quote(current_user, quote_input.content.data)
 
-    suggestions = user_suggestions(user=current_user, 
+    suggestions = user_suggestions(user=current_user,
                                    prof_owner=profile_owner,
                                    user_num=5)
 
@@ -100,7 +100,7 @@ def profile(usertag: str):
     # we need to know if the list is empty on the template
     quotes.reverse()
 
-    return dict(quote_input=quote_input, 
+    return dict(quote_input=quote_input,
                 rec_users=suggestions,
                 user=profile_owner,
                 quotes=quotes)

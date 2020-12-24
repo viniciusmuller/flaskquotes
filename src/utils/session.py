@@ -1,5 +1,5 @@
 from typing import Optional
-from random import sample
+from random import sample, randint
 
 from utils.decorators import commit
 from database.tables import Quote
@@ -8,7 +8,7 @@ from database.tables import User
 
 def find_user(usersearch: str) -> Optional[User]:
     """Search for a user either by name or tag and returns it
-    
+
     Parameters
     ----------
     usersearch : `str`
@@ -18,7 +18,7 @@ def find_user(usersearch: str) -> Optional[User]:
     ------
     user : `User`
         Requested user instance
-    
+
     Notes
     -----
     If the user is not found, returns None
@@ -44,7 +44,7 @@ def validate_signup(usertag: str) -> bool:
         User already exists in the database
     """
 
-    user = User.query.filter_by(usertag=usertag).first() 
+    user = User.query.filter_by(usertag=usertag).first()
 
     # Returns True if the usertag is not in use
     return not bool(user)
@@ -52,12 +52,12 @@ def validate_signup(usertag: str) -> bool:
 
 def validate_login(usertag: str, password: str) -> bool:
     """Compare input password with the actual user hashed password.
-    
+
     Parameters
     ----------
     usertag : `str`
         User  usertag
-    
+
     password : `str`
         Password inserted in login form
 
@@ -132,8 +132,8 @@ def register_user(username: str, usertag: str, password: str) -> User:
     u : `User`
         Registered user instance
     """
-    pic_num = random.randint(0, 1000)
-    user_pic = f'https://api.adorable.io/avatars/200/{pic_num}@adorable.io'
+    pic_num = randint(0, 1000)
+    user_pic = f'https://avatars.dicebear.com/api/avataaars/{pic_num}.svg'
 
     u = User(username=username, usertag=usertag, profile_pic=user_pic)
     u.create_hashed_password(password)

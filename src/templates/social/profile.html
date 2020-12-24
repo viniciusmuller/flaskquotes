@@ -41,7 +41,7 @@
                 </div> <!-- END Following modal -->
                  <!-- Followers -->
                 <h5 class="modal-toggle" data-toggle="modal" data-target="#followers_modal">
-                    {{ user.followers|length }} followers
+                    <span id="prof-owner-followers">{{ user.followers|length }}</span> followers
                 </h5>
                 <!-- Followers Modal -->
                 <div id="followers_modal" class="modal fade" role="dialog">
@@ -109,7 +109,7 @@
                 </div>
             </div> <!-- END User quotes -->
             <!-- User suggestions -->
-            <div class="col-lg-3"> 
+            <div class="col-lg-3">
                 <div class="user-suggestions">
                     <h4>You may like:</h4>
                     {% if rec_users %}
@@ -131,4 +131,7 @@
             </div> <!-- END User suggestions -->
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/follow.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/delete_quote.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/post_quote.js') }}"></script>
 {% endblock %}
